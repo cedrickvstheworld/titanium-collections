@@ -27,9 +27,9 @@ export type Design = {
 // Lengths are omitted on purpose: each design is sold in several lengths and
 // the 3D model uses one representative length.
 export const DESIGNS: Design[] = [
+  { id: "cnc-m10", group: "CNC Head Bolts", name: "M10 CNC Head" },
   { id: "cnc-m6", group: "CNC Head Bolts", name: "M6 CNC Head" },
   { id: "cnc-m8", group: "CNC Head Bolts", name: "M8 CNC Head" },
-  { id: "cnc-m10", group: "CNC Head Bolts", name: "M10 CNC Head" },
   { id: "body-bolt", group: "Body Bolts", name: "Body Bolt" },
   { id: "body-bolt-star", group: "Body Bolts", name: "Body Bolt Star" },
   { id: "body-screw", group: "Body Screws", name: "Body Screw" },
@@ -38,7 +38,8 @@ export const DESIGNS: Design[] = [
 
 export const DESIGN_GROUPS: DesignGroup[] = ["CNC Head Bolts", "Body Bolts", "Body Screws"];
 
-export const DEFAULT_DESIGN = DESIGNS[1]; // M8 CNC Head
+// looked up by id so reordering the list doesn't change the default
+export const DEFAULT_DESIGN = DESIGNS.find((d) => d.id === "cnc-m8")!;
 
 export const modelUrl = (d: Design) => asset(`/models/${d.id}.glb`);
 export const thumbUrl = (d: Design) => asset(`/thumbs/${d.id}.png`);
