@@ -39,7 +39,7 @@ export const DESIGNS: Design[] = [
 export const DESIGN_GROUPS: DesignGroup[] = ["CNC Head Bolts", "Body Bolts", "Body Screws"];
 
 // looked up by id so reordering the list doesn't change the default
-export const DEFAULT_DESIGN = DESIGNS.find((d) => d.id === "cnc-m8")!;
+export const DEFAULT_DESIGN = DESIGNS.find((d) => d.id === "cnc-m10")!;
 
 export const modelUrl = (d: Design) => asset(`/models/${d.id}.glb`);
 export const thumbUrl = (d: Design) => asset(`/thumbs/${d.id}.png`);
