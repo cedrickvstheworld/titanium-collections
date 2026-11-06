@@ -1,6 +1,11 @@
 // Shared app constants: available designs, anodization finishes, burnt gradient.
 // Visual references live in /references (designs/ and finishes/).
 
+// Prefix for files in /public when hosted under a sub-path (GitHub Pages).
+// next/image and useGLTF don't add basePath to plain string URLs.
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export const asset = (path: string) => `${BASE_PATH}${encodeURI(path)}`;
+
 // -------------------------------------------------------------------- brand
 export const BRAND = {
   name: "Titanium Collections",
@@ -35,8 +40,8 @@ export const DESIGN_GROUPS: DesignGroup[] = ["CNC Head Bolts", "Body Bolts", "Bo
 
 export const DEFAULT_DESIGN = DESIGNS[1]; // M8 CNC Head
 
-export const modelUrl = (d: Design) => `/models/${d.id}.glb`;
-export const thumbUrl = (d: Design) => `/thumbs/${d.id}.png`;
+export const modelUrl = (d: Design) => asset(`/models/${d.id}.glb`);
+export const thumbUrl = (d: Design) => asset(`/thumbs/${d.id}.png`);
 
 // Every model is scaled so its largest dimension is this many scene units.
 export const MODEL_DISPLAY_SIZE = 3.7; // ~80% of the original 4.6

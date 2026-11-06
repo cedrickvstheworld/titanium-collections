@@ -14,6 +14,7 @@ import {
   type MeshPhysicalMaterial,
 } from "three";
 import {
+  asset,
   BRAND,
   DEFAULT_DESIGN,
   DEFAULT_FINISH,
@@ -259,7 +260,7 @@ function ShopeeLink() {
       aria-label={`Visit ${BRAND.name} on Shopee (opens in a new tab)`}
       className="flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-[#292929] shadow-lg transition hover:scale-[1.03] hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:absolute sm:top-6 sm:right-6 sm:gap-2 sm:px-3.5 sm:py-2 sm:text-sm"
     >
-      <Image src={encodeURI(BRAND.shopeeIcon)} alt="" width={18} height={20} className="h-4 w-auto sm:h-5" />
+      <Image src={asset(BRAND.shopeeIcon)} alt="" width={18} height={20} className="h-4 w-auto sm:h-5" />
       <span>Shopee</span>
     </a>
   );
