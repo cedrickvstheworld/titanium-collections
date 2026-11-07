@@ -278,7 +278,9 @@ export default function BoltShowcase() {
     <div className="relative flex h-full w-full flex-col overflow-hidden sm:block">
       <header className="flex items-center justify-between gap-3 px-4 pt-[max(1rem,env(safe-area-inset-top))] sm:contents">
         <BrandMark />
-        <div className="flex items-center gap-2 sm:absolute sm:top-6 sm:right-6 sm:gap-3">
+        {/* z-10: on desktop the full-screen canvas wrapper comes later in the DOM
+            and would otherwise sit on top and swallow clicks on these controls */}
+        <div className="z-10 flex items-center gap-2 sm:absolute sm:top-6 sm:right-6 sm:gap-3">
           <ThemeToggle />
           <ShopeeLink />
         </div>
