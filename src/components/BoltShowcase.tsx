@@ -28,6 +28,7 @@ import {
   type Finish,
 } from "@/utils/constants";
 import { burntColors, type FastenerMeta } from "@/utils/burnt";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Load a (meshopt-compressed, quantized) model and bake it into a plain
 // float geometry in real-world units, with the burnt gradient as vertex colors.
@@ -144,7 +145,7 @@ function DesignPicker({
       aria-label="Available designs"
       className="sm:absolute sm:top-6 sm:left-6 sm:max-h-[calc(100dvh-8rem)] sm:overflow-y-auto sm:pr-1"
     >
-      <p className="mb-2 text-[10px] font-medium tracking-[0.18em] text-white/50 uppercase sm:mb-3 sm:text-[11px]">
+      <p className="mb-2 text-[10px] font-medium tracking-[0.18em] text-foreground/50 uppercase sm:mb-3 sm:text-[11px]">
         Featured designs
       </p>
       <div
@@ -154,7 +155,7 @@ function DesignPicker({
       >
         {DESIGN_GROUPS.map((group) => (
           <div key={group} className="contents sm:block">
-            <p className="hidden text-[10px] tracking-[0.14em] text-white/35 uppercase sm:mb-1.5 sm:block">
+            <p className="hidden text-[10px] tracking-[0.14em] text-foreground/35 uppercase sm:mb-1.5 sm:block">
               {group}
             </p>
             <div className="contents sm:flex sm:flex-col sm:gap-1.5">
@@ -167,8 +168,10 @@ function DesignPicker({
                     role="radio"
                     aria-checked={active}
                     onClick={() => onSelect(d)}
-                    className={`flex shrink-0 snap-start cursor-pointer items-center gap-2 rounded-xl border p-1.5 pr-3 text-left transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white sm:w-52 sm:gap-2.5 sm:pr-1.5 ${
-                      active ? "border-white/70 bg-white/10" : "border-white/10 hover:border-white/25 hover:bg-white/5"
+                    className={`flex shrink-0 snap-start cursor-pointer items-center gap-2 rounded-xl border p-1.5 pr-3 text-left transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground sm:w-52 sm:gap-2.5 sm:pr-1.5 ${
+                      active
+                        ? "border-foreground/70 bg-foreground/10"
+                        : "border-foreground/10 hover:border-foreground/25 hover:bg-foreground/5"
                     }`}
                   >
                     <Image
@@ -178,7 +181,7 @@ function DesignPicker({
                       height={40}
                       className="size-9 shrink-0 rounded-lg bg-black/20 sm:size-10"
                     />
-                    <span className="truncate text-xs font-medium whitespace-nowrap text-white sm:text-sm">
+                    <span className="truncate text-xs font-medium whitespace-nowrap text-foreground sm:text-sm">
                       {d.name}
                     </span>
                   </button>
@@ -215,12 +218,12 @@ function FinishPicker({
             aria-checked={active}
             aria-label={f.name}
             onClick={() => onSelect(f)}
-            className="group relative cursor-pointer rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group relative cursor-pointer rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             <span
               style={{ background: f.swatch }}
               className={`block size-8 rounded-lg transition-transform duration-150 group-hover:scale-110 sm:size-9 ${
-                active ? "scale-110 ring-2 ring-white ring-offset-2 ring-offset-background" : "ring-1 ring-white/15"
+                active ? "scale-110 ring-2 ring-foreground ring-offset-2 ring-offset-background" : "ring-1 ring-foreground/15"
               }`}
             />
             {/* name label: white bold text on a solid dark pill — above the
@@ -241,10 +244,10 @@ function FinishPicker({
 function BrandMark() {
   return (
     <div className="min-w-0 select-none sm:pointer-events-none sm:absolute sm:bottom-6 sm:left-6">
-      <h1 className="font-brand truncate text-[13px] leading-none tracking-[0.1em] text-white uppercase sm:text-xl sm:tracking-[0.12em]">
+      <h1 className="font-brand truncate text-[13px] leading-none tracking-[0.1em] text-foreground uppercase sm:text-xl sm:tracking-[0.12em]">
         {BRAND.name}
       </h1>
-      <p className="mt-1.5 hidden text-[11px] tracking-[0.2em] text-white/45 uppercase sm:mt-2 sm:block">
+      <p className="mt-1.5 hidden text-[11px] tracking-[0.2em] text-foreground/45 uppercase sm:mt-2 sm:block">
         {BRAND.tagline}
       </p>
     </div>
@@ -258,7 +261,7 @@ function ShopeeLink() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${BRAND.name} on Shopee (opens in a new tab)`}
-      className="flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-[#292929] shadow-lg transition hover:scale-[1.03] hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:absolute sm:top-6 sm:right-6 sm:gap-2 sm:px-3.5 sm:py-2 sm:text-sm"
+      className="flex shrink-0 items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background shadow-lg transition hover:scale-[1.03] hover:bg-foreground/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:gap-2 sm:px-3.5 sm:py-2 sm:text-sm"
     >
       <Image src={asset(BRAND.shopeeIcon)} alt="" width={18} height={20} className="h-4 w-auto sm:h-5" />
       <span>Shopee</span>
@@ -275,7 +278,10 @@ export default function BoltShowcase() {
     <div className="relative flex h-full w-full flex-col overflow-hidden sm:block">
       <header className="flex items-center justify-between gap-3 px-4 pt-[max(1rem,env(safe-area-inset-top))] sm:contents">
         <BrandMark />
-        <ShopeeLink />
+        <div className="flex items-center gap-2 sm:absolute sm:top-6 sm:right-6 sm:gap-3">
+          <ThemeToggle />
+          <ShopeeLink />
+        </div>
       </header>
 
       <div className="relative min-h-0 flex-1 sm:absolute sm:inset-0">
