@@ -244,7 +244,9 @@ function FinishPicker({
 function BrandMark() {
   return (
     <div className="min-w-0 select-none sm:pointer-events-none sm:absolute sm:bottom-6 sm:left-6">
-      <h1 className="font-brand truncate text-[13px] leading-none tracking-[0.1em] text-foreground uppercase sm:text-xl sm:tracking-[0.12em]">
+      {/* phones: smaller type that may wrap onto two lines instead of being clipped
+          by the toggle + Shopee buttons; one line from sm up */}
+      <h1 className="font-brand text-[11px] leading-tight tracking-[0.06em] text-foreground uppercase sm:truncate sm:text-xl sm:leading-none sm:tracking-[0.12em]">
         {BRAND.name}
       </h1>
       <p className="mt-1.5 hidden text-[11px] tracking-[0.2em] text-foreground/45 uppercase sm:mt-2 sm:block">

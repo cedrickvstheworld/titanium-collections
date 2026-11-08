@@ -32,14 +32,14 @@ export default function ThemeToggle() {
       aria-label="Light mode"
       title={light ? "Switch to dark mode" : "Switch to light mode"}
       onClick={() => setTheme(light ? "dark" : "light")}
-      className="relative flex h-8 w-14 shrink-0 cursor-pointer items-center justify-between rounded-full border border-foreground/20 bg-foreground/10 px-2 text-foreground/60 transition-colors hover:border-foreground/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:h-9 sm:w-16"
+      className="relative flex h-7 w-12 shrink-0 cursor-pointer items-center justify-between rounded-full border border-foreground/20 bg-foreground/10 px-1.5 text-foreground/60 transition-colors hover:border-foreground/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:h-9 sm:w-16"
     >
       <Moon />
       <Sun />
       <span
         aria-hidden
         className={`absolute top-0.5 left-0.5 size-6 rounded-full bg-foreground shadow transition-transform duration-200 sm:size-7 ${
-          light ? "translate-x-6 sm:translate-x-7" : "translate-x-0"
+          light ? "translate-x-[18px] sm:translate-x-[30px]" : "translate-x-0"
         }`}
       />
     </button>
