@@ -29,6 +29,7 @@ import {
 } from "@/utils/constants";
 import { burntColors, type FastenerMeta } from "@/utils/burnt";
 import ThemeToggle from "@/components/ThemeToggle";
+import BgColorPicker from "@/components/BgColorPicker";
 
 // Load a (meshopt-compressed, quantized) model and bake it into a plain
 // float geometry in real-world units, with the burnt gradient as vertex colors.
@@ -283,6 +284,7 @@ export default function BoltShowcase() {
         {/* z-10: on desktop the full-screen canvas wrapper comes later in the DOM
             and would otherwise sit on top and swallow clicks on these controls */}
         <div className="z-10 flex items-center gap-2 sm:absolute sm:top-6 sm:right-6 sm:gap-3">
+          <BgColorPicker />
           <ThemeToggle />
           <ShopeeLink />
         </div>
